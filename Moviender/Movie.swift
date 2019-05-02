@@ -18,11 +18,11 @@ class Movie : Decodable {
         }
     }
     var releaseDate : Date
-    var imageURL : String
+    var imageURL : URL
     var voteAverage : Float
     var description : String
     
-    init(title: String, id: Int, genres: [Genre], releaseDate: Date, imageURL: String, voteAverage: Float, description: String) {
+    init(title: String, id: Int, genres: [Genre], releaseDate: Date, imageURL: URL, voteAverage: Float, description: String) {
         self.title = title
         self.genres = genres
         self.id = id

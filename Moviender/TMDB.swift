@@ -95,6 +95,11 @@ class TMDB {
                 do {
                     // Convert NSData to Dictionary where keys are of type String, and values are of any type
                     let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:AnyObject]
+                    
+                    print(json)
+                    print("========================")
+                    print(json["results"])
+                    
                     let dataMovies = try JSONSerialization.data(withJSONObject: json["results"]!, options: [])
                     let movies = try JSONDecoder().decode([Movie].self, from: dataMovies)
                     
