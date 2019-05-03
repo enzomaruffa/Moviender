@@ -14,20 +14,21 @@ class Movie : Decodable {
     var genres : [Genre] = []
     var genreIds : [Int] = [] {
         didSet {
-            self.genres = AppData.getInstance().genreList.filter { genreIds.contains($0.id) }
+            self.genres = AppData.sharedInstance.genreList.filter { genreIds.contains($0.id) }
         }
     }
-    var releaseDate : Date
-    var posterUrl : String
-    var backdropUrl : String
-    var voteAverage : Float
-    var description : String
-    var adult : Bool
-    var voteCount : Int
+    var releaseDate : Date!
+    var posterUrl : String!
+    var backdropUrl : String!
+    var voteAverage : Float!
+    var description : String!
+    var adult : Bool!
+    var voteCount : Int!
     
     init(title: String, id: Int, genres: [Genre], releaseDate: Date, posterUrl: String, backdropUrl: String, voteAverage: Float, description: String, adult: Bool, voteCount: Int) {
         self.title = title
         self.genres = genres
+        self.genreIds = []
         self.id = id
         self.releaseDate = releaseDate
         self.posterUrl = posterUrl
@@ -55,7 +56,7 @@ class Movie : Decodable {
         return [
             Movie(title: "Oiii",
                   id: 1,
-                  genres: AppData.getInstance().genreList,
+                  genres: AppData.sharedInstance.genreList,
                   releaseDate: Date(),
                   posterUrl: "https://rd1.com.br/wp-content/uploads/2019/02/20190215-programa-do-ratinho-620x420.png",
                   backdropUrl: "https://rd1.com.br/wp-content/uploads/2019/02/20190215-programa-do-ratinho-620x420.png",

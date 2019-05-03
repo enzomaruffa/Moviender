@@ -13,15 +13,13 @@ class WatchlistViewController: UIViewController, MovieSelector {
     @IBOutlet weak var tableView: UITableView!
     
     var tableDelegate : MovieTableDelegate!
+    var movies : [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AppData.getInstance()
-//        TMDB.setGenreList(params: ["" : ""])
         
-        let movies = Movie.randomList()
-        print(movies)
+//        TMDB.setGenreList(params: ["" : ""])
         
         tableDelegate = MovieTableDelegate(movies: movies)
         tableDelegate.delegate = self
@@ -34,8 +32,15 @@ class WatchlistViewController: UIViewController, MovieSelector {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let movies = AppData.sharedInstance.user.approvedRecomendations
+        tableDelegate.movieList = movies
+        tableView.reloadData()
+    }
+    
     func didSelect(movie: Movie) {
         print("selected:", movie.title)
+        performSegue(withIdentifier: "segueDetail", sender: movie)
     }
     
 
@@ -43,10 +48,17 @@ class WatchlistViewController: UIViewController, MovieSelector {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+ */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueDetail" {
+            let movie = sender as! Movie
+            if let vc = segue.destination as? MovieViewController {
+                vc.movie = movie
+            }
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }

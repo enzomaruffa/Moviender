@@ -99,9 +99,12 @@ class TMDB {
                     print(json)
                     print("========================")
                     print(json["results"])
-                    
+                    let decoder = JSONDecoder()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "YYYY-MM-DD"
+                    decoder.dateDecodingStrategy = .formatted(formatter)
                     let dataMovies = try JSONSerialization.data(withJSONObject: json["results"]!, options: [])
-                    let movies = try JSONDecoder().decode([Movie].self, from: dataMovies)
+                    let movies = try decoder.decode([Movie].self, from: dataMovies)
                     
                     print(movies)
                     movies.forEach({ print($0.id, " ", $0.title) })

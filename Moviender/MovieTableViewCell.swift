@@ -30,6 +30,6 @@ class MovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         descriptionTextView.text = movie.description
         yearLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
-        movieImage.setImageFromUrl(ImageURL: movie.posterUrl)
+        movieImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
     }
 }

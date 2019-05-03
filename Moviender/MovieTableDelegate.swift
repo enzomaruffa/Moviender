@@ -10,7 +10,7 @@ import UIKit
 
 class MovieTableDelegate : NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    private var movieList : [Movie]
+    var movieList : [Movie]
     
     weak var delegate: MovieSelector?
     
@@ -24,7 +24,6 @@ class MovieTableDelegate : NSObject, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
-        
         cell.setupCell(movie: movieList[indexPath.row])
         
         return cell

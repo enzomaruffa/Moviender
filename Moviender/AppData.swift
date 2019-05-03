@@ -12,7 +12,7 @@ class AppData {
     
     var user : User
     var genreList : [Genre]
-    static var instance : AppData = AppData()
+    static var sharedInstance : AppData = AppData()
     
     private init() {
         self.user = User(name: "Enzo", watched: [], recomendations: [], approvedRecomendations: [])
@@ -26,10 +26,6 @@ class AppData {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    static func getInstance() -> AppData {
-        return instance
     }
     
 }

@@ -21,13 +21,13 @@ class MovieViewController: UIViewController {
     var movie : Movie!
     
     override func viewWillAppear(_ animated: Bool) {
-        backdropImage.setImageFromUrl(ImageURL: movie.TMDBBackdropURLasString(width: 415))
+        backdropImage.setImageFromUrl(ImageURL: movie.TMDBBackdropURLasString(width: 500))
         titleLabel.text = movie.title
         descriptionTextView.text = movie.description
         dateLabel.text = movie.releaseDate.description
         voteAverageLabel.text = movie.voteAverage.description
         voteCountLabel.text = movie.voteCount.description
-        posterImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 170))
+        posterImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
         
     }
     

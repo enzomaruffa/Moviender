@@ -12,6 +12,7 @@ class MovieCardView: UIView {
 
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -24,9 +25,9 @@ class MovieCardView: UIView {
         // Initialization code
     }
     
-    func setupCell(movie : Movie) {
+    func setupCard(movie : Movie) {
         titleLabel.text = movie.title
-        movieImage.setImageFromUrl(ImageURL: movie.posterUrl)
+        movieImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
     }
 
 }

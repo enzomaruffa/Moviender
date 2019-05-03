@@ -17,6 +17,7 @@ class DiscoverViewController: UIViewController {
             switch result {
             case .success(let movies):
                 print("puxei", movies.count, "movies!")
+                AppData.sharedInstance.user.approvedRecomendations = movies
             case .failure(let error):
                 print(error.localizedDescription)
             }
