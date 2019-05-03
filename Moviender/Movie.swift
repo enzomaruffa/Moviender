@@ -11,12 +11,12 @@ import Foundation
 class Movie : Decodable {
     var id : Int
     var title : String
-    var genres : [Genre] = []
-    var genreIds : [Int] = [] {
-        didSet {
-            self.genres = AppData.sharedInstance.genreList.filter { genreIds.contains($0.id) }
-        }
-    }
+    lazy var genres : [Genre] = {
+        print(genreIds.contains(AppData.sharedInstance.genreList[0].id))
+        print(genreIds)
+        return AppData.sharedInstance.genreList.filter { genreIds.contains($0.id) }
+    }()
+    var genreIds : [Int] = []
     var releaseDate : Date!
     var posterUrl : String!
     var backdropUrl : String!
@@ -27,7 +27,7 @@ class Movie : Decodable {
     
     init(title: String, id: Int, genres: [Genre], releaseDate: Date, posterUrl: String, backdropUrl: String, voteAverage: Float, description: String, adult: Bool, voteCount: Int) {
         self.title = title
-        self.genres = genres
+        //self.genres = genres
         self.genreIds = []
         self.id = id
         self.releaseDate = releaseDate

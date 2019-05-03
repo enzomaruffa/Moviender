@@ -12,10 +12,26 @@ class Genre : Decodable {
     
     var name : String
     var id : Int
-    var tagColor : UIColor!
-//    var tagColor : UIColor {
-//        return .white
-//    }
+    var tagColor : UIColor {
+        switch name {
+            case "Action": //action
+                return .red
+            case "Adventure": //action
+                return .orange
+            case "Comedy": //action
+                return .yellow
+            case "Drama": //action
+                return .purple
+            case "Fantasy": //action
+                return .cyan
+            case "Horror": //action
+                return .black
+            case "Animation": //action
+                return .green
+            default:
+                return .white
+        }
+    }
     
     init(name: String, id: Int) {
         self.name = name

@@ -96,9 +96,6 @@ class TMDB {
                     // Convert NSData to Dictionary where keys are of type String, and values are of any type
                     let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:AnyObject]
                     
-                    print(json)
-                    print("========================")
-                    print(json["results"])
                     let decoder = JSONDecoder()
                     let formatter = DateFormatter()
                     formatter.dateFormat = "YYYY-MM-DD"

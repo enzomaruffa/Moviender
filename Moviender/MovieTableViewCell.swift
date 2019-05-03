@@ -14,6 +14,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var tagsStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,5 +32,22 @@ class MovieTableViewCell: UITableViewCell {
         descriptionTextView.text = movie.description
         yearLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
         movieImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
+        
+        print("movie genres:", movie.genres)
+        print("movie genres:", movie.genreIds)
+        
+        //clears stack
+        /*for subUIView in tagsStackView.subviews as [UIView] {
+            subUIView.removeFromSuperview()
+        }
+        
+        for genre in movie.genres {
+            firstTag.text = movie.genres.first?.name
+            firstTag.backgroundColor = movie.genres.first?.tagColor
+            firstTag.textColor = movie.genres.first?.tagColor.borderByBackground()
+            
+            tagsStackView.addArrangedSubview(UIView)
+        }*/
+        
     }
 }

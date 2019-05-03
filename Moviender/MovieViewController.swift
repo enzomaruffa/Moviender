@@ -21,10 +21,13 @@ class MovieViewController: UIViewController {
     var movie : Movie!
     
     override func viewWillAppear(_ animated: Bool) {
-        backdropImage.setImageFromUrl(ImageURL: movie.TMDBBackdropURLasString(width: 500))
+        backdropImage.setImageFromUrl(ImageURL: movie.TMDBBackdropURLasString(width: 1280))
         titleLabel.text = movie.title
         descriptionTextView.text = movie.description
-        dateLabel.text = movie.releaseDate.description
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "DD-MM-YYYY"
+        dateLabel.text = formatter.string(from: movie.releaseDate)
         voteAverageLabel.text = movie.voteAverage.description
         voteCountLabel.text = movie.voteCount.description
         posterImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
@@ -33,7 +36,9 @@ class MovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.backBarButtonItem?.tintColor = .white
         // Do any additional setup after loading the view.
     }
     

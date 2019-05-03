@@ -27,53 +27,44 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBr-em-muD">
-                        <rect key="frame" x="178" y="15" width="222" height="21.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <rect key="frame" x="178" y="15" width="222" height="23"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-4F-VB2">
-                        <rect key="frame" x="178" y="38.5" width="222" height="161"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-4F-VB2">
+                        <rect key="frame" x="178" y="65" width="222" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="161" id="ZLG-MS-VME"/>
-                        </constraints>
                         <string key="text">Uma descrição de filme vai muito além de palavras. Ela fala sobre os er que está lendo isso e sobre o Jovem Ryan., atuante no mundo do cinema</string>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaT-5k-gyW">
-                        <rect key="frame" x="178" y="232.5" width="30" height="12"/>
-                        <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="12" id="gvx-pq-YZK"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1990" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l3-dB-x4p">
-                        <rect key="frame" x="383" y="1" width="25" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <rect key="frame" x="177" y="41" width="31" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HL8-PL-UFa">
+                        <rect key="frame" x="169" y="173" width="231" height="68"/>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8l3-dB-x4p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="7dk-y9-rc8"/>
-                    <constraint firstItem="YaT-5k-gyW" firstAttribute="top" secondItem="qmt-4F-VB2" secondAttribute="bottom" constant="33" id="CFM-N8-enV"/>
-                    <constraint firstItem="YaT-5k-gyW" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="17" id="F7t-Dn-UKA"/>
+                    <constraint firstItem="8l3-dB-x4p" firstAttribute="top" secondItem="ZBr-em-muD" secondAttribute="bottom" constant="3" id="3Re-Xa-oAv"/>
+                    <constraint firstItem="HL8-PL-UFa" firstAttribute="top" secondItem="qmt-4F-VB2" secondAttribute="bottom" constant="8" id="C3J-5l-biq"/>
                     <constraint firstItem="qmt-4F-VB2" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="17" id="Q7o-9L-22B"/>
                     <constraint firstItem="ZBr-em-muD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="TEI-Jp-WWb"/>
-                    <constraint firstItem="qmt-4F-VB2" firstAttribute="top" secondItem="ZBr-em-muD" secondAttribute="bottom" constant="2" id="XSM-Do-7gH"/>
                     <constraint firstItem="gMa-GG-ZWw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-3" id="dAG-Wf-wz5"/>
+                    <constraint firstItem="qmt-4F-VB2" firstAttribute="top" secondItem="8l3-dB-x4p" secondAttribute="bottom" constant="8" id="dFK-3o-cKV"/>
                     <constraint firstAttribute="trailing" secondItem="ZBr-em-muD" secondAttribute="trailing" constant="9" id="eB5-Zk-bbx"/>
-                    <constraint firstAttribute="trailing" secondItem="8l3-dB-x4p" secondAttribute="trailing" constant="1" id="fbL-ZE-t0n"/>
+                    <constraint firstAttribute="trailing" secondItem="8l3-dB-x4p" secondAttribute="trailing" constant="201" id="fbL-ZE-t0n"/>
                     <constraint firstAttribute="trailing" secondItem="qmt-4F-VB2" secondAttribute="trailing" constant="9" id="kdw-QJ-EBo"/>
-                    <constraint firstAttribute="bottom" secondItem="YaT-5k-gyW" secondAttribute="bottom" constant="9" id="lhZ-Fu-bDj"/>
+                    <constraint firstItem="HL8-PL-UFa" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="8" id="mU8-NI-OPt"/>
                     <constraint firstItem="ZBr-em-muD" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="17" id="oVy-gh-fja"/>
+                    <constraint firstAttribute="trailing" secondItem="HL8-PL-UFa" secondAttribute="trailing" constant="9" id="sDP-l6-Ca0"/>
                     <constraint firstAttribute="bottom" secondItem="gMa-GG-ZWw" secondAttribute="bottom" constant="3.5" id="sF1-XE-jNv"/>
+                    <constraint firstAttribute="bottom" secondItem="HL8-PL-UFa" secondAttribute="bottom" constant="12.5" id="tHH-z8-h6B"/>
                     <constraint firstItem="gMa-GG-ZWw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="v8X-oV-Hw7"/>
                 </constraints>
             </tableViewCellContentView>
@@ -81,6 +72,7 @@
             <connections>
                 <outlet property="descriptionTextView" destination="qmt-4F-VB2" id="jf8-In-EdJ"/>
                 <outlet property="movieImage" destination="gMa-GG-ZWw" id="iRg-eV-6Kz"/>
+                <outlet property="tagsStackView" destination="HL8-PL-UFa" id="k0P-kn-68d"/>
                 <outlet property="titleLabel" destination="ZBr-em-muD" id="Uf9-3G-rQ2"/>
                 <outlet property="yearLabel" destination="8l3-dB-x4p" id="ium-pW-0ZU"/>
             </connections>
