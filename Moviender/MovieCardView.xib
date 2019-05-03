@@ -41,6 +41,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="contentView" destination="-1" id="ak9-w2-A3Y"/>
                 <outlet property="movieImage" destination="3E6-kq-Fy6" id="1OO-Vc-0yr"/>
                 <outlet property="titleLabel" destination="abD-4s-Ocz" id="XsJ-jg-Nfh"/>
             </connections>

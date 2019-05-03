@@ -37,17 +37,30 @@ class MovieTableViewCell: UITableViewCell {
         print("movie genres:", movie.genreIds)
         
         //clears stack
-        /*for subUIView in tagsStackView.subviews as [UIView] {
+        for subUIView in tagsStackView.subviews as [UIView] {
             subUIView.removeFromSuperview()
         }
         
-        for genre in movie.genres {
-            firstTag.text = movie.genres.first?.name
-            firstTag.backgroundColor = movie.genres.first?.tagColor
-            firstTag.textColor = movie.genres.first?.tagColor.borderByBackground()
+        for genre in movie.genres.prefix(3) {
             
-            tagsStackView.addArrangedSubview(UIView)
-        }*/
+            let tempButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+            tempButton.titleLabel?.font =  UIFont.systemFont(ofSize: 10)
+            let desiredWidth = (tempButton.titleLabel)!.frame.width
+            
+            print(desiredWidth)
+            
+            let button = UIButton(frame: CGRect(x: 100, y: 100, width: desiredWidth, height: 50))
+            button.titleLabel?.font =  UIFont.systemFont(ofSize: 10)
+            
+            button.setTitle(genre.name, for: .normal)
+            button.backgroundColor = genre.tagColor
+            
+            button.layer.cornerRadius = 5
+            button.layer.borderColor = genre.tagColor.borderByBackground().cgColor
+            button.setTitleColor(genre.tagColor.borderByBackground(), for: UIControl.State.normal)
+            
+            tagsStackView.addArrangedSubview(button)
+        }
         
     }
 }

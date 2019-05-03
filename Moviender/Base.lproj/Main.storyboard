@@ -106,6 +106,9 @@
                         <viewLayoutGuide key="safeArea" id="Ham-AS-jIr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discover" largeTitleDisplayMode="always" id="2Df-nz-m1x"/>
+                    <connections>
+                        <outlet property="cardsContainer" destination="1s3-vU-sv8" id="huV-ul-qQf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrs-Wa-bhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -276,7 +279,7 @@
                         <color key="badgeColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="6By-Dw-zRR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="6By-Dw-zRR">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
