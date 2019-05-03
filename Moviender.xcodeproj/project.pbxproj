@@ -22,9 +22,13 @@
 		4704D5C9227B288600C684B2 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704D5C8227B288600C684B2 /* AppData.swift */; };
 		4704D5CB227B291F00C684B2 /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704D5CA227B291F00C684B2 /* TMDB.swift */; };
 		4704D5CD227B58E400C684B2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704D5CC227B58E400C684B2 /* MovieViewController.swift */; };
-		4704D5CF227B5B6C00C684B2 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704D5CE227B5B6C00C684B2 /* MovieCardView.swift */; };
 		4704D5D2227B5EB700C684B2 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704D5D0227B5EB700C684B2 /* MovieTableViewCell.swift */; };
 		4704D5D3227B5EB700C684B2 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4704D5D1227B5EB700C684B2 /* MovieTableViewCell.xib */; };
+		47DB0C3E227C615F00AC2E1C /* MovieTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C3D227C615F00AC2E1C /* MovieTableDelegate.swift */; };
+		47DB0C42227C620000AC2E1C /* MovieProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C41227C620000AC2E1C /* MovieProtocol.swift */; };
+		47DB0C45227C641000AC2E1C /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */; };
+		47DB0C4B227C8D5900AC2E1C /* MovieCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */; };
+		47DB0C4D227C90E800AC2E1C /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +49,13 @@
 		4704D5C8227B288600C684B2 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		4704D5CA227B291F00C684B2 /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 		4704D5CC227B58E400C684B2 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
-		4704D5CE227B5B6C00C684B2 /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 		4704D5D0227B5EB700C684B2 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		4704D5D1227B5EB700C684B2 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		47DB0C3D227C615F00AC2E1C /* MovieTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableDelegate.swift; sourceTree = "<group>"; };
+		47DB0C41227C620000AC2E1C /* MovieProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieProtocol.swift; sourceTree = "<group>"; };
+		47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCardView.xib; sourceTree = "<group>"; };
+		47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4704D5A6227B22E400C684B2 /* AppDelegate.swift */,
+				47DB0C41227C620000AC2E1C /* MovieProtocol.swift */,
 				4704D5A8227B22E400C684B2 /* ViewController.swift */,
 				4704D5AA227B22E400C684B2 /* Main.storyboard */,
 				4704D5AD227B22E500C684B2 /* Assets.xcassets */,
@@ -96,9 +105,12 @@
 				4704D5C8227B288600C684B2 /* AppData.swift */,
 				4704D5CA227B291F00C684B2 /* TMDB.swift */,
 				4704D5CC227B58E400C684B2 /* MovieViewController.swift */,
-				4704D5CE227B5B6C00C684B2 /* MovieCardView.swift */,
 				4704D5D0227B5EB700C684B2 /* MovieTableViewCell.swift */,
 				4704D5D1227B5EB700C684B2 /* MovieTableViewCell.xib */,
+				47DB0C3D227C615F00AC2E1C /* MovieTableDelegate.swift */,
+				47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */,
+				47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */,
+				47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */,
 			);
 			path = Moviender;
 			sourceTree = "<group>";
@@ -163,6 +175,7 @@
 			files = (
 				4704D5B1227B22E500C684B2 /* LaunchScreen.storyboard in Resources */,
 				4704D5AE227B22E500C684B2 /* Assets.xcassets in Resources */,
+				47DB0C4B227C8D5900AC2E1C /* MovieCardView.xib in Resources */,
 				4704D5D3227B5EB700C684B2 /* MovieTableViewCell.xib in Resources */,
 				4704D5AC227B22E400C684B2 /* Main.storyboard in Resources */,
 			);
@@ -175,17 +188,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47DB0C42227C620000AC2E1C /* MovieProtocol.swift in Sources */,
 				4704D5BD227B254E00C684B2 /* WatchedViewController.swift in Sources */,
 				4704D5B9227B253300C684B2 /* WatchlistViewController.swift in Sources */,
 				4704D5D2227B5EB700C684B2 /* MovieTableViewCell.swift in Sources */,
 				4704D5BF227B25FF00C684B2 /* Movie.swift in Sources */,
 				4704D5C3227B26C300C684B2 /* UIColorExtension.swift in Sources */,
 				4704D5BB227B253D00C684B2 /* DiscoverViewController.swift in Sources */,
+				47DB0C4D227C90E800AC2E1C /* MovieCardView.swift in Sources */,
 				4704D5CB227B291F00C684B2 /* TMDB.swift in Sources */,
-				4704D5CF227B5B6C00C684B2 /* MovieCardView.swift in Sources */,
+				47DB0C3E227C615F00AC2E1C /* MovieTableDelegate.swift in Sources */,
 				4704D5C5227B277300C684B2 /* User.swift in Sources */,
 				4704D5A9227B22E400C684B2 /* ViewController.swift in Sources */,
 				4704D5A7227B22E400C684B2 /* AppDelegate.swift in Sources */,
+				47DB0C45227C641000AC2E1C /* UIImageViewExtension.swift in Sources */,
 				4704D5C1227B262400C684B2 /* Genre.swift in Sources */,
 				4704D5C9227B288600C684B2 /* AppData.swift in Sources */,
 				4704D5CD227B58E400C684B2 /* MovieViewController.swift in Sources */,

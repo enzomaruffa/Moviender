@@ -10,6 +10,11 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var movieImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +26,10 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(movie : Movie) {
+        titleLabel.text = movie.title
+        descriptionTextView.text = movie.description
+        yearLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
+        movieImage.setImageFromUrl(ImageURL: movie.posterUrl)
+    }
 }
