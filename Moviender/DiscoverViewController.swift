@@ -34,16 +34,26 @@ class DiscoverViewController: UIViewController {
     }
     
     func createCards(movies: [Movie]) {
-        for movie in movies {
-            createCard(movie: movie)
+        for (current, movie) in movies.enumerated() {
+            let offset = current - movies.count / 2
+            createCard(offset : offset, movie: movie)
         }
     }
     
-    func createCard(movie: Movie) {
+    func createCard(offset : Int, movie: Movie) {
         let card = MovieCardView.instanceFromNib()
         card.setupCard(movie: movie)
+        
+        let containerCenterX = (cardsContainer.frame.maxX - cardsContainer.frame.minX) / 2
+        
+        card.center.x = containerCenterX + CGFloat(offset * 2)
+        card.center.y = card.center.y + 10 + CGFloat(offset) * 0.5
+            
+        
+        
         cardsContainer.addSubview(card)
         cards.append(card)
+        
     }
     
 

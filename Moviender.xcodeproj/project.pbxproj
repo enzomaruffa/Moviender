@@ -29,7 +29,6 @@
 		47DB0C45227C641000AC2E1C /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */; };
 		47DB0C4B227C8D5900AC2E1C /* MovieCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */; };
 		47DB0C4D227C90E800AC2E1C /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */; };
-		47DB0C4F227CC9A300AC2E1C /* ImageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0C4E227CC9A300AC2E1C /* ImageDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +56,6 @@
 		47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCardView.xib; sourceTree = "<group>"; };
 		47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
-		47DB0C4E227CC9A300AC2E1C /* ImageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +111,6 @@
 				47DB0C44227C641000AC2E1C /* UIImageViewExtension.swift */,
 				47DB0C4A227C8D5900AC2E1C /* MovieCardView.xib */,
 				47DB0C4C227C90E800AC2E1C /* MovieCardView.swift */,
-				47DB0C4E227CC9A300AC2E1C /* ImageDatabase.swift */,
 			);
 			path = Moviender;
 			sourceTree = "<group>";
@@ -205,7 +202,6 @@
 				4704D5A9227B22E400C684B2 /* ViewController.swift in Sources */,
 				4704D5A7227B22E400C684B2 /* AppDelegate.swift in Sources */,
 				47DB0C45227C641000AC2E1C /* UIImageViewExtension.swift in Sources */,
-				47DB0C4F227CC9A300AC2E1C /* ImageDatabase.swift in Sources */,
 				4704D5C1227B262400C684B2 /* Genre.swift in Sources */,
 				4704D5C9227B288600C684B2 /* AppData.swift in Sources */,
 				4704D5CD227B58E400C684B2 /* MovieViewController.swift in Sources */,

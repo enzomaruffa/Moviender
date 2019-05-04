@@ -14,20 +14,20 @@ class Genre : Decodable {
     var id : Int
     var tagColor : UIColor {
         switch name {
-            case "Action": //action
-                return .red
-            case "Adventure": //action
-                return .orange
-            case "Comedy": //action
-                return .yellow
-            case "Drama": //action
-                return .purple
-            case "Fantasy": //action
-                return .cyan
-            case "Horror": //action
-                return .black
-            case "Animation": //action
-                return .green
+            case "Action":
+                return UIColor(red: 0.7, green: 0, blue: 0, alpha: 1)
+            case "Adventure":
+                return UIColor(red: 1, green: 0.7, blue: 0, alpha: 1)
+            case "Comedy":
+                return UIColor(red: 0.7, green: 0.7, blue: 0, alpha: 1)
+            case "Drama":
+                return UIColor(red: 0.6, green: 0, blue: 0.6, alpha: 1)
+            case "Fantasy":
+                return UIColor(red: 0, green: 0, blue: 0.8, alpha: 1)
+            case "Horror":
+                return UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            case "Animation":
+                return UIColor(red: 0, green: 0.7, blue: 0.8, alpha: 1)
             default:
                 return .white
         }

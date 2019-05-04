@@ -33,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-4F-VB2">
-                        <rect key="frame" x="178" y="65" width="222" height="100"/>
+                        <rect key="frame" x="178" y="65" width="222" height="138"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <string key="text">Uma descrição de filme vai muito além de palavras. Ela fala sobre os er que está lendo isso e sobre o Jovem Ryan., atuante no mundo do cinema</string>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,8 +46,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HL8-PL-UFa">
-                        <rect key="frame" x="169" y="173" width="231" height="68"/>
+                    <stackView opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HL8-PL-UFa">
+                        <rect key="frame" x="169" y="211" width="231" height="30"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqt-fD-XFJ">
+                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.80110809169999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YG6-cF-2e9">
+                                <rect key="frame" x="114.5" y="0.0" width="116.5" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                     </stackView>
                 </subviews>
                 <constraints>

@@ -32,6 +32,7 @@ class MovieTableViewCell: UITableViewCell {
         descriptionTextView.text = movie.description
         yearLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
         movieImage.setImageFromMovie(movie: movie, type: "poster")
+        movieImage.layer.cornerRadius = 5
         
         //clears stack
         for subUIView in tagsStackView.subviews as [UIView] {
@@ -41,13 +42,15 @@ class MovieTableViewCell: UITableViewCell {
         for genre in movie.genres.prefix(3) {
             
             let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
-            button.titleLabel?.font =  UIFont.systemFont(ofSize: 10)
+            button.titleLabel?.font =  UIFont.systemFont(ofSize: 12)
             
             button.setTitle(genre.name, for: .normal)
             button.backgroundColor = genre.tagColor
             
             button.layer.cornerRadius = 5
-            button.layer.borderColor = genre.tagColor.borderByBackground().cgColor
+            button.layer.borderColor = genre.tagColor.cgColor
+            button.layer.borderWidth = 1
+            
             button.setTitleColor(genre.tagColor.borderByBackground(), for: UIControl.State.normal)
             
             tagsStackView.addArrangedSubview(button)
