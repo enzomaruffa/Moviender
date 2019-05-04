@@ -23,7 +23,7 @@ class DiscoverViewController: UIViewController {
                 print("puxei", movies.count, "movies!")
                 AppData.sharedInstance.user.approvedRecomendations = movies
                 DispatchQueue.main.async {
-                    self.createCards(movies: movies.reversed())
+                   self.createCards(movies: movies.reversed())
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -40,8 +40,8 @@ class DiscoverViewController: UIViewController {
     }
     
     func createCard(movie: Movie) {
-        let card = MovieCardView(frame: .zero)
-        //card.setupCard(movie: movie)
+        let card = MovieCardView.instanceFromNib()
+        card.setupCard(movie: movie)
         cardsContainer.addSubview(card)
         cards.append(card)
     }

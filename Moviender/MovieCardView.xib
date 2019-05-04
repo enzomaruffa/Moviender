@@ -18,6 +18,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3E6-kq-Fy6">
                     <rect key="frame" x="40" y="25" width="264" height="390"/>
+                    <gestureRecognizers/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title Which Is Very Big" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-4s-Ocz">
                     <rect key="frame" x="57" y="423" width="230" height="21"/>
@@ -27,6 +28,7 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="abD-4s-Ocz" secondAttribute="bottom" constant="17" id="6s3-oN-9L8"/>
                 <constraint firstItem="abD-4s-Ocz" firstAttribute="top" secondItem="3E6-kq-Fy6" secondAttribute="bottom" constant="8" id="OjY-lT-Frh"/>
@@ -44,8 +46,14 @@
                 <outlet property="contentView" destination="-1" id="ak9-w2-A3Y"/>
                 <outlet property="movieImage" destination="3E6-kq-Fy6" id="1OO-Vc-0yr"/>
                 <outlet property="titleLabel" destination="abD-4s-Ocz" id="XsJ-jg-Nfh"/>
+                <outletCollection property="gestureRecognizers" destination="lCr-Op-x8k" appends="YES" id="ThV-3W-gjv"/>
             </connections>
-            <point key="canvasLocation" x="-37.681159420289859" y="-84.709821428571431"/>
+            <point key="canvasLocation" x="242" y="-43"/>
         </view>
+        <tapGestureRecognizer id="lCr-Op-x8k">
+            <connections>
+                <action selector="imageClick:" destination="iN0-l3-epB" id="Tnp-Pu-b0D"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

@@ -31,10 +31,7 @@ class MovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         descriptionTextView.text = movie.description
         yearLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
-        movieImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
-        
-        print("movie genres:", movie.genres)
-        print("movie genres:", movie.genreIds)
+        movieImage.setImageFromMovie(movie: movie, type: "poster")
         
         //clears stack
         for subUIView in tagsStackView.subviews as [UIView] {
@@ -43,13 +40,7 @@ class MovieTableViewCell: UITableViewCell {
         
         for genre in movie.genres.prefix(3) {
             
-            let tempButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-            tempButton.titleLabel?.font =  UIFont.systemFont(ofSize: 10)
-            let desiredWidth = (tempButton.titleLabel)!.frame.width
-            
-            print(desiredWidth)
-            
-            let button = UIButton(frame: CGRect(x: 100, y: 100, width: desiredWidth, height: 50))
+            let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
             button.titleLabel?.font =  UIFont.systemFont(ofSize: 10)
             
             button.setTitle(genre.name, for: .normal)

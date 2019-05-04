@@ -21,31 +21,31 @@ class MovieCardView: UIView {
         // Drawing code
     }
     */
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func fromNib() {   // 2
-        Bundle.main.loadNibNamed("MovieCardView", owner: self, options: nil)
-        addSubview(contentView)     // 4
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        fromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        fromNib()
     }
     
     func setupCard(movie : Movie) {
         titleLabel.text = movie.title
-        movieImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
+        movieImage.setImageFromMovie(movie: movie, type: "poster")
     }
-
+    
+    class func instanceFromNib() -> MovieCardView {
+        return UINib(nibName: "MovieCardView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MovieCardView
+    }
+    
+    @IBAction func imageClick(_ sender: Any) {
+        self.removeFromSuperview()
+        print("tapped")
+    }
+    
 }

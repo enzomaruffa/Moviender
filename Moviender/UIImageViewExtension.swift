@@ -21,4 +21,65 @@ extension UIImageView {
             }
         }).resume()
     }
+    
+    func setImageFromMovie(movie : Movie, type : String) {
+        
+        if movie.posterImage != nil {
+            self.image = movie.posterImage
+            print("using cached")
+        } else {
+            print("downloading")
+            
+            var url = ""
+            switch type {
+            case "poster":
+                url = movie.TMDBPosterURLasString(width: 500)
+                break
+            case "banner":
+                url = movie.TMDBBackdropURLasString(width: 1280)
+                break
+            default:
+                url = ""
+            }
+            
+            URLSession.shared.dataTask( with: NSURL(string:url)! as URL, completionHandler: {
+                (data, response, error) -> Void in
+                DispatchQueue.main.async {
+                    if let data = data {
+                        print("downloaded one image")
+                        self.image = UIImage(data: data)
+                        movie.posterImage = self.image
+
+                        switch type {
+                        case "poster":
+                            movie.posterImage = self.image
+                            break
+                        case "banner":
+                            movie.bannerImage = self.image
+                            break
+                        default:
+                            url = ""
+                        }
+                    }
+                }
+            }).resume()
+        }
+    }
 }
+
+extension UIImage {
+    
+    static func createImageFromURL(imageURL: String, completion: @escaping (Result<UIImage, Error>) -> ()) {
+        URLSession.shared.dataTask( with: NSURL(string:imageURL)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                if let data = data {
+                    let image = UIImage(data: data)!
+                    completion(.success(image))
+                } 
+            }
+        }).resume()
+    }
+    
+}
+

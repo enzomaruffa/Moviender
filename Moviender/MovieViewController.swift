@@ -21,7 +21,7 @@ class MovieViewController: UIViewController {
     var movie : Movie!
     
     override func viewWillAppear(_ animated: Bool) {
-        backdropImage.setImageFromUrl(ImageURL: movie.TMDBBackdropURLasString(width: 1280))
+        backdropImage.setImageFromMovie(movie: movie, type: "banner")
         titleLabel.text = movie.title
         descriptionTextView.text = movie.description
         
@@ -30,7 +30,7 @@ class MovieViewController: UIViewController {
         dateLabel.text = formatter.string(from: movie.releaseDate)
         voteAverageLabel.text = movie.voteAverage.description
         voteCountLabel.text = movie.voteCount.description
-        posterImage.setImageFromUrl(ImageURL: movie.TMDBPosterURLasString(width: 500))
+        posterImage.setImageFromMovie(movie: movie, type: "poster")
         
     }
     
