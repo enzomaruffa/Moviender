@@ -20,7 +20,7 @@ class User {
     }
     var approvedRecomendations : [Movie] {
         didSet {
-            watched.sort { $0.title < $1.title }
+            approvedRecomendations.sort { $0.title < $1.title }
             print("sorting!")
         }
     }
