@@ -13,6 +13,7 @@ class MovieCollection {
     var movieList : [Movie] {
         didSet {
             movieList.sort { $0.title < $1.title }
+            print("sorting!")
         }
     }
     var apiPage : Int = 0

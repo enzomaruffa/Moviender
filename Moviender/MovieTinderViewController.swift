@@ -18,6 +18,7 @@ class MovieTinderViewController: UIViewController {
     @IBOutlet weak var acceptedButton: UIButton!
     
     @IBOutlet weak var cardsContainer: UIView!
+    @IBOutlet weak var wowText: UILabel!
     
     let notificationFeedback = UINotificationFeedbackGenerator()
     
@@ -25,6 +26,7 @@ class MovieTinderViewController: UIViewController {
         super.viewDidLoad()
    
         recreateView()
+        UINavigationBar.appearance().tintColor = UIColor(red:0.57, green:0.14, blue:1.00, alpha:1.0)
         // Do any additional setup after loading the view.
     }
     
@@ -33,8 +35,11 @@ class MovieTinderViewController: UIViewController {
         cards = []
         currentCard = nil
         
+        wowText.alpha = 0
+        
         movies = movies.filter { !AppData.sharedInstance.user.approvedRecomendations.contains($0) }
         movies = movies.filter { !AppData.sharedInstance.user.watched.contains($0) }
+        movies = movies.shuffled()
         self.createCards(movies: movies.reversed())
     }
     
@@ -64,61 +69,73 @@ class MovieTinderViewController: UIViewController {
     @IBAction func refuseClick(_ sender: Any) {
         print("refuse")
         
-        let cardToDie = self.currentCard
-        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
-            print("running animation")
-            cardToDie?.alpha = 0
-            cardToDie?.center = CGPoint(x: self.cardsContainer.frame.minX - 200, y: self.cardsContainer.center.y)
-        }, completion: { finished in
-            cardToDie?.removeFromSuperview()
-        })
-        
-        notificationFeedback.notificationOccurred(.error)
-        self.dismissCurrentCard()
+        if let cardToDie = self.currentCard {
+            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+                print("running animation")
+                
+                cardToDie.alpha = 0
+                cardToDie.transform = CGAffineTransform(rotationAngle: CGFloat(-1 * Double.pi/2))
+                cardToDie.center = CGPoint(x: self.cardsContainer.frame.minX - 200, y: self.cardsContainer.center.y)
+            }, completion: { finished in
+                cardToDie.removeFromSuperview()
+            })
+            
+            notificationFeedback.notificationOccurred(.error)
+            self.dismissCurrentCard()
+        }
     }
     
     @IBAction func acceptClick(_ sender: Any) {
         print("accept")
-        let movie = (currentCard?.movie)!
-        AppData.sharedInstance.user.approvedRecomendations.append(movie)
-        AppData.sharedInstance.popularMovies.remove(movie : movie)
-        AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
-        AppData.sharedInstance.topRatedMovies.remove(movie : movie)
         
-        let cardToDie = self.currentCard
-        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
-            print("running animation")
-            cardToDie?.center = CGPoint(x: self.cardsContainer.frame.maxX + 200, y: self.cardsContainer.center.x)
-        }, completion: { finished in
-            cardToDie?.removeFromSuperview()
-        })
-        
-        notificationFeedback.notificationOccurred(.warning)
-        self.dismissCurrentCard()
+        if let cardToDie = self.currentCard {
+            let movie = (cardToDie.movie)!
+            AppData.sharedInstance.user.approvedRecomendations.append(movie)
+            AppData.sharedInstance.popularMovies.remove(movie : movie)
+            AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
+            AppData.sharedInstance.topRatedMovies.remove(movie : movie)
+            
+            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+                print("running animation")
+                
+                cardToDie.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/6))
+                cardToDie.center = CGPoint(x: self.cardsContainer.frame.maxX + 200, y: self.cardsContainer.center.x)
+            }, completion: { finished in
+                cardToDie.removeFromSuperview()
+            })
+            
+            notificationFeedback.notificationOccurred(.warning)
+            self.dismissCurrentCard()
+        }
     }
     
     @IBAction func seenClick(_ sender: Any) {
         print("seen")
-        let movie = (currentCard?.movie)!
-        AppData.sharedInstance.user.approvedRecomendations.append(movie)
-        AppData.sharedInstance.popularMovies.remove(movie : movie)
-        AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
-        AppData.sharedInstance.topRatedMovies.remove(movie : movie)
         
-        let cardToDie = self.currentCard
-        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
-            print("running animation")
-            cardToDie?.center = CGPoint(x: self.cardsContainer.center.x, y: self.cardsContainer.frame.maxY + 200)
-        }, completion: { finished in
-            cardToDie?.removeFromSuperview()
-        })
         
-        notificationFeedback.notificationOccurred(.success)
-        self.dismissCurrentCard()
+        if let cardToDie = self.currentCard {
+            let movie = (cardToDie.movie)!
+            AppData.sharedInstance.user.watched.append(movie)
+            AppData.sharedInstance.popularMovies.remove(movie : movie)
+            AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
+            AppData.sharedInstance.topRatedMovies.remove(movie : movie)
+            
+            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+                print("running animation")
+                
+                cardToDie.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                cardToDie.center = CGPoint(x: self.cardsContainer.center.x, y: self.cardsContainer.frame.maxY + 200)
+            }, completion: { finished in
+                cardToDie.removeFromSuperview()
+            })
+            
+            notificationFeedback.notificationOccurred(.success)
+            self.dismissCurrentCard()
+        }
     }
     
     func dismissCurrentCard() {
-        if cards.count > 0 {
+        if cards.count > 1 {
             cards.removeLast()
             print("changing current card. count: ", cards.count)
             currentCard = cards.last
@@ -127,6 +144,10 @@ class MovieTinderViewController: UIViewController {
             refuseButton.isEnabled = false
             seenButton.isEnabled = false
             acceptedButton.isEnabled = false
+            
+            UIView.animate(withDuration: 4, animations:{
+                self.wowText.alpha = 1
+            })
         }
     }
     /*

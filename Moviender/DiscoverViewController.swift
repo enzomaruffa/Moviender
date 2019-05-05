@@ -104,7 +104,7 @@ class DiscoverViewController: UIViewController {
                     vc.movies = AppData.sharedInstance.topRatedMovies.movieList
                     vc.title = "Top Rated"
                 } else if type == "now playing" {
-                    vc.movies = AppData.sharedInstance.topRatedMovies.movieList
+                    vc.movies = AppData.sharedInstance.nowPlayingMovies.movieList
                     vc.title = "Now Playing"
                 }
             }

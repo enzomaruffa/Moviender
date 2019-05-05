@@ -12,8 +12,18 @@ class User {
     
     var name : String
     
-    var watched : [Movie]
-    var approvedRecomendations : [Movie]
+    var watched : [Movie] {
+        didSet {
+            watched.sort { $0.title < $1.title }
+            print("sorting!")
+        }
+    }
+    var approvedRecomendations : [Movie] {
+        didSet {
+            watched.sort { $0.title < $1.title }
+            print("sorting!")
+        }
+    }
     
     init(name: String, watched: [Movie], approvedRecomendations: [Movie]) {
         self.name = name
