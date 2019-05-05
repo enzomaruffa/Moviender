@@ -17,6 +17,7 @@ class MovieCardView: UIView {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tagsStackView: UIStackView!
     
+    var movie : Movie?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -38,6 +39,8 @@ class MovieCardView: UIView {
     }
     
     func setupCard(movie : Movie) {
+        self.movie = movie
+        
         titleLabel.text = movie.title
         movieImage.setImageFromMovie(movie: movie, type: "poster")
         

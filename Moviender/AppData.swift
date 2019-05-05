@@ -17,7 +17,6 @@ class AppData {
     var topRatedMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
     var nowPlayingMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
     
-    
     static var sharedInstance : AppData = AppData()
     
     private init() {

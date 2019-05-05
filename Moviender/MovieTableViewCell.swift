@@ -48,7 +48,7 @@ class MovieTableViewCell: UITableViewCell {
             button.backgroundColor = genre.tagColor
             
             button.layer.cornerRadius = 5
-            button.layer.borderColor = genre.tagColor.cgColor
+            button.layer.borderColor = genre.tagColor.borderByBackground().cgColor
             button.layer.borderWidth = 1
             
             button.setTitleColor(genre.tagColor.borderByBackground(), for: UIControl.State.normal)

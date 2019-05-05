@@ -8,7 +8,15 @@
 
 import UIKit
 
-class Movie : Decodable {
+class Movie : Decodable, Equatable {
+    
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        if lhs.id == rhs.id {
+            return true
+        }
+        return false
+    }
+    
     var id : Int
     var title : String
     lazy var genres : [Genre] = {
