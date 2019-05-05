@@ -106,6 +106,10 @@ class TMDB {
                     print(movies)
                     movies.forEach({ print($0.id, " ", $0.title) })
                     
+                    if let maxPage = json["total_pages"] as! Int? {
+                        AppData.sharedInstance.popularMovies.maxPage = maxPage
+                    }
+                    
                     completion(.success(movies))
                 } catch {
                     completion(.failure(error))
@@ -161,6 +165,10 @@ class TMDB {
                     print(movies)
                     movies.forEach({ print($0.id, " ", $0.title) })
                     
+                    if let maxPage = json["total_pages"] as! Int? {
+                        AppData.sharedInstance.topRatedMovies.maxPage = maxPage
+                    }
+                    
                     completion(.success(movies))
                 } catch {
                     completion(.failure(error))
@@ -212,6 +220,10 @@ class TMDB {
                     decoder.dateDecodingStrategy = .formatted(formatter)
                     let dataMovies = try JSONSerialization.data(withJSONObject: json["results"], options: [])
                     let movies = try decoder.decode([Movie].self, from: dataMovies)
+                    
+                    if let maxPage = json["total_pages"] as! Int? {
+                        AppData.sharedInstance.nowPlayingMovies.maxPage = maxPage
+                    }
                     
                     print(movies)
                     movies.forEach({ print($0.id, " ", $0.title) })

@@ -16,46 +16,40 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if AppData.sharedInstance.popularMovies.movieList.count < 5 && AppData.sharedInstance.popularMovies.apiPage < AppData.sharedInstance.popularMovies.maxPage {
+            
+            AppData.sharedInstance.popularMovies.apiPage += 1
+            let newPage = AppData.sharedInstance.popularMovies.apiPage
+            
+            TMDB.getPopularMovies(params: ["page" :  newPage.description]) { (result) in
+                switch result {
+                case .success(let movies):
+                    print("puxei", movies.count, "movies!")
+                    AppData.sharedInstance.popularMovies.movieList.append(contentsOf: movies)
+                    self.popularMoviesBanner.setImageFromMovie(movie: AppData.sharedInstance.popularMovies.movieList.first!, type: "banner")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         
-        if AppData.sharedInstance.popularMovies.movieList.isEmpty {
+        }
+        
+        if AppData.sharedInstance.topRatedMovies.movieList.count < 5 && AppData.sharedInstance.topRatedMovies.apiPage < AppData.sharedInstance.topRatedMovies.maxPage {
             
-            TMDB.getPopularMovies(params: ["page" : "1"]) { (result) in
+            AppData.sharedInstance.topRatedMovies.apiPage += 1
+            let newPage = AppData.sharedInstance.topRatedMovies.apiPage
+            
+            TMDB.getTopRatedMovies(params: ["page" :  newPage.description]) { (result) in
                 switch result {
                 case .success(let movies):
                     print("puxei", movies.count, "movies!")
-                    AppData.sharedInstance.popularMovies.movieList = movies
-                    AppData.sharedInstance.popularMovies.apiPage = 1
-                    DispatchQueue.main.async {
-                        self.popularMoviesBanner.setImageFromMovie(movie: (movies.first)!, type: "banner")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-            
-            TMDB.getTopRatedMovies(params: ["page" : "1"]) { (result) in
-                switch result {
-                case .success(let movies):
-                    print("puxei", movies.count, "movies!")
-                    AppData.sharedInstance.topRatedMovies.movieList = movies
-                    AppData.sharedInstance.topRatedMovies.apiPage = 1
-                    DispatchQueue.main.async {
-                        self.topRatedBanner.setImageFromMovie(movie: (movies.first)!, type: "banner")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-            
-            TMDB.getNowPlayingMovies(params: ["page":"1"]) { (result) in
-                switch result {
-                case .success(let movies):
-                    print("puxei", movies.count, "movies!")
-                    AppData.sharedInstance.nowPlayingMovies.movieList = movies
-                    AppData.sharedInstance.nowPlayingMovies.apiPage = 1
-                    DispatchQueue.main.async {
-                        self.nowPlayingBanner.setImageFromMovie(movie: (movies.first)!, type: "banner")
-                    }
+                    AppData.sharedInstance.topRatedMovies.movieList.append(contentsOf: movies)
+                    self.topRatedBanner.setImageFromMovie(movie: AppData.sharedInstance.topRatedMovies.movieList.first!, type: "banner")
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -63,8 +57,23 @@ class DiscoverViewController: UIViewController {
             
         }
         
-
-        // Do any additional setup after loading the view.
+        if AppData.sharedInstance.nowPlayingMovies.movieList.count < 5 && AppData.sharedInstance.nowPlayingMovies.apiPage < AppData.sharedInstance.nowPlayingMovies.maxPage {
+            
+            AppData.sharedInstance.nowPlayingMovies.apiPage += 1
+            let newPage = AppData.sharedInstance.nowPlayingMovies.apiPage
+            
+            TMDB.getNowPlayingMovies(params: ["page" :  newPage.description]) { (result) in
+                switch result {
+                case .success(let movies):
+                    print("puxei", movies.count, "movies!")
+                    AppData.sharedInstance.nowPlayingMovies.movieList.append(contentsOf: movies)
+                    self.nowPlayingBanner.setImageFromMovie(movie: AppData.sharedInstance.nowPlayingMovies.movieList.first!, type: "banner")              case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        }
+        
     }
     
     @IBAction func popularImageClick(_ sender: Any) {
@@ -87,14 +96,18 @@ class DiscoverViewController: UIViewController {
         if segue.identifier == "goToTinderView" {
             if let vc = segue.destination as? MovieTinderViewController {
                 let type = sender as! String
+                
                 if type == "popular" {
+                    
                     vc.movies = AppData.sharedInstance.popularMovies.movieList
                     vc.title = "Popular"
+                    
                 } else if type == "top rated" {
+                    
                     vc.movies = AppData.sharedInstance.topRatedMovies.movieList
                     vc.title = "Top Rated"
                 } else if type == "now playing" {
-                    vc.movies = AppData.sharedInstance.nowPlayingMovies.movieList
+                    vc.movies = AppData.sharedInstance.topRatedMovies.movieList
                     vc.title = "Now Playing"
                 }
             }

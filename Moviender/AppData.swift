@@ -13,9 +13,9 @@ class AppData {
     var user : User
     var genreList : [Genre]
     
-    var popularMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
-    var topRatedMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
-    var nowPlayingMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
+    var popularMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0, maxPage: 10)
+    var topRatedMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0, maxPage: 10)
+    var nowPlayingMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0, maxPage: 10)
     
     static var sharedInstance : AppData = AppData()
     
@@ -31,6 +31,12 @@ class AppData {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func removeFromCollections(movie : Movie) {
+        popularMovies.remove(movie: movie)
+        topRatedMovies.remove(movie: movie)
+        nowPlayingMovies.remove(movie: movie)
     }
     
 }

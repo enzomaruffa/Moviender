@@ -31,7 +31,6 @@ class MovieTinderViewController: UIViewController {
             createCard(offset : offset, movie: movie)
         }
         currentCard = cards.last
-        print(currentCard)
     }
     
     func createCard(offset : Int, movie: Movie) {
@@ -49,27 +48,45 @@ class MovieTinderViewController: UIViewController {
     
     @IBAction func refuseClick(_ sender: Any) {
         print("refuse")
-        dismissCurrentCard()
+        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.frame.minX - 200, y: cardsContainer.center.y))
     }
     
     @IBAction func acceptClick(_ sender: Any) {
         print("accept")
-        AppData.sharedInstance.user.approvedRecomendations.append((currentCard?.movie)!)
-        dismissCurrentCard()
+        let movie = (currentCard?.movie)!
+        AppData.sharedInstance.user.approvedRecomendations.append(movie)
+        AppData.sharedInstance.popularMovies.remove(movie : movie)
+        AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
+        AppData.sharedInstance.topRatedMovies.remove(movie : movie)
+        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.frame.maxX + 200, y: cardsContainer.center.x))
     }
     
     @IBAction func seenClick(_ sender: Any) {
         print("seen")
-        AppData.sharedInstance.user.watched.append((currentCard?.movie)!)
-        dismissCurrentCard()
+        let movie = (currentCard?.movie)!
+        AppData.sharedInstance.user.approvedRecomendations.append(movie)
+        AppData.sharedInstance.popularMovies.remove(movie : movie)
+        AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
+        AppData.sharedInstance.topRatedMovies.remove(movie : movie)
+        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.center.x, y: cardsContainer.frame.maxY + 200))
     }
     
-    func dismissCurrentCard() {
-        print("dismissing!")
-        print(currentCard)
-        currentCard?.removeFromSuperview()
-        cards.removeLast()
-        currentCard = cards.last
+    func dismissCurrentCard(dismissPosition : CGPoint) {
+        UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseInOut, animations: {
+            print("running animation")
+            self.currentCard?.alpha = 0
+            self.currentCard?.center = dismissPosition
+        }, completion: { finished in
+            self.currentCard?.removeFromSuperview()
+        })
+        
+        if cards.count > 0 {
+            cards.removeLast()
+            print("changing current card. count: ", cards.count)
+            currentCard = cards.last
+        } else {
+            currentCard = nil
+        }
     }
     /*
      // MARK: - Navigation

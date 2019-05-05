@@ -15,12 +15,17 @@ class MovieCollection {
             movieList.sort { $0.title < $1.title }
         }
     }
-    var apiPage : Int
+    var apiPage : Int = 0
+    var maxPage : Int = 2
     
-    init(movieList: [Movie], apiPage: Int) {
+    init(movieList: [Movie], apiPage: Int, maxPage : Int) {
         self.movieList = movieList
         self.apiPage = apiPage
+        self.maxPage = maxPage
     }
     
+    func remove(movie : Movie) {
+        movieList.removeAll { $0.id == movie.id}
+    }
     
 }
