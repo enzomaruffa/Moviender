@@ -40,6 +40,8 @@ class WatchedViewController: UIViewController, MovieSelector {
         let movies = AppData.sharedInstance.user.watched
         tableDelegate.movieList = movies
         tableView.reloadData()
+        
+        self.tabBarController?.tabBar.items?[2].badgeValue = nil
     }
     
     func didSelect(movie: Movie) {

@@ -53,7 +53,7 @@ class MovieTinderViewController: UIViewController {
     
     func createCard(offset : Int, movie: Movie) {
         let card = MovieCardView.instanceFromNib()
-        card.frame = CGRect(x: cardsContainer.frame.minX + 20, y: cardsContainer.frame.minY - 80, width: cardsContainer.frame.width - 50, height: cardsContainer.frame.height - 120)
+        card.frame = CGRect(x: cardsContainer.frame.minX + 20, y: cardsContainer.frame.minY - 80, width: cardsContainer.frame.width - 50, height: cardsContainer.frame.height - 80)
         print(card.frame)
         card.setupCard(movie: movie)
         
@@ -70,7 +70,7 @@ class MovieTinderViewController: UIViewController {
         print("refuse")
         
         if let cardToDie = self.currentCard {
-            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
                 print("running animation")
                 
                 cardToDie.alpha = 0
@@ -95,11 +95,19 @@ class MovieTinderViewController: UIViewController {
             AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
             AppData.sharedInstance.topRatedMovies.remove(movie : movie)
             
-            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
                 print("running animation")
                 
                 cardToDie.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/6))
                 cardToDie.center = CGPoint(x: self.cardsContainer.frame.maxX + 200, y: self.cardsContainer.center.x)
+                
+                if let badgeValue = self.tabBarController?.tabBar.items?[0].badgeValue,
+                    let value = Int(badgeValue) {
+                    self.tabBarController?.tabBar.items?[0].badgeValue = String(value + 1)
+                } else {
+                    self.tabBarController?.tabBar.items?[0].badgeValue = "1"
+                }
+                
             }, completion: { finished in
                 cardToDie.removeFromSuperview()
             })
@@ -120,11 +128,18 @@ class MovieTinderViewController: UIViewController {
             AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
             AppData.sharedInstance.topRatedMovies.remove(movie : movie)
             
-            UIView.animate(withDuration: 0.55, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.33, delay: 0, options: .curveLinear, animations: {
                 print("running animation")
-                
-                cardToDie.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                cardToDie.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 cardToDie.center = CGPoint(x: self.cardsContainer.center.x, y: self.cardsContainer.frame.maxY + 200)
+                
+                if let badgeValue = self.tabBarController?.tabBar.items?[2].badgeValue,
+                    let value = Int(badgeValue) {
+                    self.tabBarController?.tabBar.items?[2].badgeValue = String(value + 1)
+                } else {
+                    self.tabBarController?.tabBar.items?[2].badgeValue = "1"
+                }
+                
             }, completion: { finished in
                 cardToDie.removeFromSuperview()
             })

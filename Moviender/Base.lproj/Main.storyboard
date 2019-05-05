@@ -432,7 +432,7 @@ RECOMMEN DATIONS</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p7O-pL-ote" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Watchlist" image="list" id="C3s-11-OU7">
-                        <color key="badgeColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nKA-ls-glu">
@@ -476,7 +476,7 @@ RECOMMEN DATIONS</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rv5-bY-VdH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Watched" image="clock" id="7GL-ZK-SCg">
-                        <color key="badgeColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                        <color key="badgeColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eU8-EJ-yvd">

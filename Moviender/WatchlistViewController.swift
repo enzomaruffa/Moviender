@@ -41,6 +41,8 @@ class WatchlistViewController: UIViewController, MovieSelector {
         let movies = AppData.sharedInstance.user.approvedRecomendations
         tableDelegate.movieList = movies
         tableView.reloadData()
+        
+        self.tabBarController?.tabBar.items?[0].badgeValue = nil
     }
     
     func didSelect(movie: Movie) {
