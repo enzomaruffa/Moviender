@@ -28,6 +28,8 @@ class Genre : Decodable {
                 return UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             case "Animation":
                 return UIColor(red: 0, green: 0.7, blue: 0.8, alpha: 1)
+            case "Science Fiction":
+                return UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
             default:
                 return .white
         }

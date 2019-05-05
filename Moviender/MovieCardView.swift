@@ -46,6 +46,7 @@ class MovieCardView: UIView {
         
         dateLabel.text = Calendar.current.component(.year, from: movie.releaseDate).description
         descriptionTextView.text = movie.description
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         
         //clears stack
         for subUIView in tagsStackView.subviews as [UIView] {
@@ -72,7 +73,7 @@ class MovieCardView: UIView {
         self.layer.cornerRadius = 10
         
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 1
+        self.layer.shadowOpacity = 0.8
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = 3
     }

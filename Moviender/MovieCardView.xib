@@ -13,15 +13,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCardView" customModule="Moviender" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="340" height="590"/>
+            <rect key="frame" x="0.0" y="0.0" width="340" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3E6-kq-Fy6">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="590"/>
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="600"/>
                     <gestureRecognizers/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PO-II-kKe">
-                    <rect key="frame" x="0.0" y="360" width="340" height="236"/>
+                    <rect key="frame" x="0.0" y="360" width="340" height="240"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title Which Is Very Big" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-4s-Ocz">
                             <rect key="frame" x="8" y="10" width="324" height="20.5"/>
@@ -36,14 +36,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" editable="NO" text="Brief description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REW-2j-NSe">
-                            <rect key="frame" x="8" y="48.5" width="324" height="132.5"/>
+                            <rect key="frame" x="8" y="48.5" width="324" height="136.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rjD-Yv-02D">
-                            <rect key="frame" x="8" y="196" width="324" height="30"/>
+                            <rect key="frame" x="8" y="200" width="324" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DIH-In-XB2"/>
@@ -64,6 +64,7 @@
                         <constraint firstItem="abD-4s-Ocz" firstAttribute="leading" secondItem="0PO-II-kKe" secondAttribute="leading" constant="8" id="lAw-uw-pRV"/>
                         <constraint firstAttribute="trailing" secondItem="rjD-Yv-02D" secondAttribute="trailing" constant="8" id="x5h-Ok-2Za"/>
                         <constraint firstItem="abD-4s-Ocz" firstAttribute="top" secondItem="0PO-II-kKe" secondAttribute="top" constant="10" id="xH8-rD-hYC"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="yuz-7Y-dWV"/>
                     </constraints>
                 </view>
             </subviews>
@@ -71,8 +72,8 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="0PO-II-kKe" firstAttribute="height" secondItem="3E6-kq-Fy6" secondAttribute="height" multiplier="0.4" id="9Bh-G9-2O2"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="3E6-kq-Fy6" secondAttribute="top" constant="44" id="BAj-TT-5B2"/>
-                <constraint firstItem="0PO-II-kKe" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="40" id="FCR-8Q-TL5"/>
+                <constraint firstAttribute="top" secondItem="3E6-kq-Fy6" secondAttribute="top" id="BAj-TT-5B2"/>
+                <constraint firstItem="0PO-II-kKe" firstAttribute="bottom" secondItem="3E6-kq-Fy6" secondAttribute="bottom" id="FCR-8Q-TL5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0PO-II-kKe" secondAttribute="trailing" id="FRk-ke-dB0"/>
                 <constraint firstItem="0PO-II-kKe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KuA-en-1ze"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3E6-kq-Fy6" secondAttribute="trailing" id="PN5-cz-rye"/>

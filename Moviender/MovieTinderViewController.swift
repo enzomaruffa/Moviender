@@ -19,6 +19,8 @@ class MovieTinderViewController: UIViewController {
     
     @IBOutlet weak var cardsContainer: UIView!
     
+    let notificationFeedback = UINotificationFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -70,6 +72,8 @@ class MovieTinderViewController: UIViewController {
         }, completion: { finished in
             cardToDie?.removeFromSuperview()
         })
+        
+        notificationFeedback.notificationOccurred(.error)
         self.dismissCurrentCard()
     }
     
@@ -89,6 +93,7 @@ class MovieTinderViewController: UIViewController {
             cardToDie?.removeFromSuperview()
         })
         
+        notificationFeedback.notificationOccurred(.warning)
         self.dismissCurrentCard()
     }
     
@@ -108,6 +113,7 @@ class MovieTinderViewController: UIViewController {
             cardToDie?.removeFromSuperview()
         })
         
+        notificationFeedback.notificationOccurred(.success)
         self.dismissCurrentCard()
     }
     
