@@ -24,46 +24,50 @@ extension UIImageView {
     
     func setImageFromMovie(movie : Movie, type : String) {
         
-        if movie.posterImage != nil {
+        if type == "banner" && movie.bannerImage != nil {
+            self.image = movie.bannerImage
+            print("using cached")
+            return
+        } else if type == "poster" && movie.posterImage != nil  {
             self.image = movie.posterImage
             print("using cached")
-        } else {
-            print("downloading")
-            
-            var url = ""
-            switch type {
-            case "poster":
-                url = movie.TMDBPosterURLasString(width: 500)
-                break
-            case "banner":
-                url = movie.TMDBBackdropURLasString(width: 1280)
-                break
-            default:
-                url = ""
-            }
-            
-            URLSession.shared.dataTask( with: NSURL(string:url)! as URL, completionHandler: {
-                (data, response, error) -> Void in
-                DispatchQueue.main.async {
-                    if let data = data {
-                        print("downloaded one image")
-                        self.image = UIImage(data: data)
-                        movie.posterImage = self.image
+            return
+        }
+        
+        print("downloading")
+        
+        var url = ""
+        switch type {
+        case "poster":
+            url = movie.TMDBPosterURLasString(width: 500)
+            break
+        case "banner":
+            url = movie.TMDBBackdropURLasString(width: 1280)
+            break
+        default:
+            url = ""
+        }
+        
+        URLSession.shared.dataTask( with: NSURL(string:url)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                if let data = data {
+                    print("downloaded one image")
+                    self.image = UIImage(data: data)
 
-                        switch type {
-                        case "poster":
-                            movie.posterImage = self.image
-                            break
-                        case "banner":
-                            movie.bannerImage = self.image
-                            break
-                        default:
-                            url = ""
-                        }
+                    switch type {
+                    case "poster":
+                        movie.posterImage = self.image
+                        break
+                    case "banner":
+                        movie.bannerImage = self.image
+                        break
+                    default:
+                        break
                     }
                 }
-            }).resume()
-        }
+            }
+        }).resume()
     }
 }
 

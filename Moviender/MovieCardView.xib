@@ -91,14 +91,8 @@
                 <outlet property="movieImage" destination="3E6-kq-Fy6" id="1OO-Vc-0yr"/>
                 <outlet property="tagsStackView" destination="rjD-Yv-02D" id="BlR-8v-azk"/>
                 <outlet property="titleLabel" destination="abD-4s-Ocz" id="XsJ-jg-Nfh"/>
-                <outletCollection property="gestureRecognizers" destination="lCr-Op-x8k" appends="YES" id="ThV-3W-gjv"/>
             </connections>
             <point key="canvasLocation" x="240.57971014492756" y="-43.191964285714285"/>
         </view>
-        <tapGestureRecognizer id="lCr-Op-x8k">
-            <connections>
-                <action selector="imageClick:" destination="iN0-l3-epB" id="Tnp-Pu-b0D"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>

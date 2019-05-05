@@ -14,7 +14,7 @@ extension UIColor {
         var (r1, g1, b1, a1): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
         guard self.getRed(&r1, green: &g1, blue: &b1, alpha: &a1) else { return UIColor.white }
         
-        if r1 >= 0.99 && g1 >= 0.99 && b1 >= 0.99 {
+        if r1 >= 0.95 && g1 >= 0.95 && b1 >= 0.95 {
             return UIColor.black
         }
         return UIColor.white

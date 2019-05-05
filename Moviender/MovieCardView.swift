@@ -78,9 +78,4 @@ class MovieCardView: UIView {
         return UINib(nibName: "MovieCardView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MovieCardView
     }
     
-    @IBAction func imageClick(_ sender: Any) {
-        self.removeFromSuperview()
-        print("tapped")
-    }
-    
 }

@@ -12,10 +12,16 @@ class AppData {
     
     var user : User
     var genreList : [Genre]
+    
+    var popularMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
+    var topRatedMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
+    var nowPlayingMovies : MovieCollection = MovieCollection(movieList: [], apiPage: 0)
+    
+    
     static var sharedInstance : AppData = AppData()
     
     private init() {
-        self.user = User(name: "Enzo", watched: [], recomendations: [], approvedRecomendations: [])
+        self.user = User(name: "Enzo", watched: [], approvedRecomendations: [])
         self.genreList = []
         
         TMDB.setGenreList(params: ["" : ""]) { (result) in
