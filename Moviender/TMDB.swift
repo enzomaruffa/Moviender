@@ -241,4 +241,59 @@ class TMDB {
             }
         }).resume()
     }
+    
+    static func getMovieRecommendations(movie: Movie, params: [String:String], completion: @escaping (Result<[Movie], Error>) -> ()) {
+        var urlComponents = URLComponents(string: BASIS_URL + "/movie/" + movie.id.description + "/recommendations")!
+        
+        // cria lista de parametros
+        var items = [URLQueryItem]()
+        
+        // cria parametro da API_key
+        items.append(URLQueryItem(name: "api_key", value: API_KEY))
+        
+        // adiciona outros parametros
+        for (key,value) in params {
+            items.append(URLQueryItem(name: key, value: value))
+        }
+        
+        // filtra os parametros sem nome
+        items = items.filter{!$0.name.isEmpty}
+        
+        if !items.isEmpty {
+            urlComponents.queryItems = items
+        }
+        
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+            // Check if data was received successfully
+            if error == nil && data != nil {
+                do {
+                    // Convert NSData to Dictionary where keys are of type String, and values are of any type
+                    let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:AnyObject]
+                    
+                    let decoder = JSONDecoder()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "YYYY-MM-DD"
+                    decoder.dateDecodingStrategy = .formatted(formatter)
+                    let dataMovies = try JSONSerialization.data(withJSONObject: json["results"], options: [])
+                    let movies = try decoder.decode([Movie].self, from: dataMovies)
+                    
+                    print(movies)
+                    movies.forEach({ print($0.id, " ", $0.title) })
+                    
+                    completion(.success(movies))
+                } catch {
+                    completion(.failure(error))
+                    print("[ERROR] Error getting movies. catch")
+                }
+            }
+            else if error != nil
+            {
+                completion(.failure(error!))
+                print("[ERROR] Error getting movies. not nil")
+            }
+        }).resume()
+    }
 }

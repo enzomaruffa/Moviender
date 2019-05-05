@@ -23,6 +23,7 @@ extension UIImageView {
     }
     
     func setImageFromMovie(movie : Movie, type : String) {
+        print(movie, type)
         
         if type == "banner" && movie.bannerImage != nil {
             self.image = movie.bannerImage

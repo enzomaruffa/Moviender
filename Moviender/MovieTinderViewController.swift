@@ -13,16 +13,27 @@ class MovieTinderViewController: UIViewController {
     var movies : [Movie] = []
     var cards : [MovieCardView] = []
     var currentCard : MovieCardView?
+    @IBOutlet weak var refuseButton: UIButton!
+    @IBOutlet weak var seenButton: UIButton!
+    @IBOutlet weak var acceptedButton: UIButton!
     
     @IBOutlet weak var cardsContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
    
+        recreateView()
+        // Do any additional setup after loading the view.
+    }
+    
+    func recreateView() {
+        cards.map {$0.removeFromSuperview()}
+        cards = []
+        currentCard = nil
+        
         movies = movies.filter { !AppData.sharedInstance.user.approvedRecomendations.contains($0) }
         movies = movies.filter { !AppData.sharedInstance.user.watched.contains($0) }
         self.createCards(movies: movies.reversed())
-        // Do any additional setup after loading the view.
     }
     
     func createCards(movies: [Movie]) {
@@ -35,6 +46,8 @@ class MovieTinderViewController: UIViewController {
     
     func createCard(offset : Int, movie: Movie) {
         let card = MovieCardView.instanceFromNib()
+        card.frame = CGRect(x: cardsContainer.frame.minX + 20, y: cardsContainer.frame.minY - 80, width: cardsContainer.frame.width - 50, height: cardsContainer.frame.height - 120)
+        print(card.frame)
         card.setupCard(movie: movie)
         
         let containerCenterX = (cardsContainer.frame.maxX - cardsContainer.frame.minX) / 2
@@ -48,7 +61,16 @@ class MovieTinderViewController: UIViewController {
     
     @IBAction func refuseClick(_ sender: Any) {
         print("refuse")
-        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.frame.minX - 200, y: cardsContainer.center.y))
+        
+        let cardToDie = self.currentCard
+        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
+            print("running animation")
+            cardToDie?.alpha = 0
+            cardToDie?.center = CGPoint(x: self.cardsContainer.frame.minX - 200, y: self.cardsContainer.center.y)
+        }, completion: { finished in
+            cardToDie?.removeFromSuperview()
+        })
+        self.dismissCurrentCard()
     }
     
     @IBAction func acceptClick(_ sender: Any) {
@@ -58,7 +80,16 @@ class MovieTinderViewController: UIViewController {
         AppData.sharedInstance.popularMovies.remove(movie : movie)
         AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
         AppData.sharedInstance.topRatedMovies.remove(movie : movie)
-        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.frame.maxX + 200, y: cardsContainer.center.x))
+        
+        let cardToDie = self.currentCard
+        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
+            print("running animation")
+            cardToDie?.center = CGPoint(x: self.cardsContainer.frame.maxX + 200, y: self.cardsContainer.center.x)
+        }, completion: { finished in
+            cardToDie?.removeFromSuperview()
+        })
+        
+        self.dismissCurrentCard()
     }
     
     @IBAction func seenClick(_ sender: Any) {
@@ -68,24 +99,28 @@ class MovieTinderViewController: UIViewController {
         AppData.sharedInstance.popularMovies.remove(movie : movie)
         AppData.sharedInstance.nowPlayingMovies.remove(movie : movie)
         AppData.sharedInstance.topRatedMovies.remove(movie : movie)
-        dismissCurrentCard(dismissPosition: CGPoint(x: cardsContainer.center.x, y: cardsContainer.frame.maxY + 200))
-    }
-    
-    func dismissCurrentCard(dismissPosition : CGPoint) {
-        UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseInOut, animations: {
+        
+        let cardToDie = self.currentCard
+        UIView.animate(withDuration: 0.75, delay: 0, options: .curveLinear, animations: {
             print("running animation")
-            self.currentCard?.alpha = 0
-            self.currentCard?.center = dismissPosition
+            cardToDie?.center = CGPoint(x: self.cardsContainer.center.x, y: self.cardsContainer.frame.maxY + 200)
         }, completion: { finished in
-            self.currentCard?.removeFromSuperview()
+            cardToDie?.removeFromSuperview()
         })
         
+        self.dismissCurrentCard()
+    }
+    
+    func dismissCurrentCard() {
         if cards.count > 0 {
             cards.removeLast()
             print("changing current card. count: ", cards.count)
             currentCard = cards.last
         } else {
             currentCard = nil
+            refuseButton.isEnabled = false
+            seenButton.isEnabled = false
+            acceptedButton.isEnabled = false
         }
     }
     /*

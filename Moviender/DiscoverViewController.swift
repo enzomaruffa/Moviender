@@ -98,12 +98,9 @@ class DiscoverViewController: UIViewController {
                 let type = sender as! String
                 
                 if type == "popular" {
-                    
                     vc.movies = AppData.sharedInstance.popularMovies.movieList
                     vc.title = "Popular"
-                    
                 } else if type == "top rated" {
-                    
                     vc.movies = AppData.sharedInstance.topRatedMovies.movieList
                     vc.title = "Top Rated"
                 } else if type == "now playing" {
