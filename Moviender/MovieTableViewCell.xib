@@ -33,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-4F-VB2">
-                        <rect key="frame" x="178" y="65" width="222" height="138"/>
+                        <rect key="frame" x="178" y="62" width="222" height="141"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <string key="text">Uma descrição de filme vai muito além de palavras. Ela fala sobre os er que está lendo isso e sobre o Jovem Ryan., atuante no mundo do cinema</string>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,7 +41,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1990" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l3-dB-x4p">
-                        <rect key="frame" x="177" y="41" width="31" height="16"/>
+                        <rect key="frame" x="181" y="38" width="31" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -64,14 +64,14 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8l3-dB-x4p" firstAttribute="top" secondItem="ZBr-em-muD" secondAttribute="bottom" constant="3" id="3Re-Xa-oAv"/>
+                    <constraint firstItem="8l3-dB-x4p" firstAttribute="top" secondItem="ZBr-em-muD" secondAttribute="bottom" id="3Re-Xa-oAv"/>
                     <constraint firstItem="HL8-PL-UFa" firstAttribute="top" secondItem="qmt-4F-VB2" secondAttribute="bottom" constant="8" id="C3J-5l-biq"/>
+                    <constraint firstItem="8l3-dB-x4p" firstAttribute="leading" secondItem="ZBr-em-muD" secondAttribute="leading" constant="3" id="IMa-Uq-k2J"/>
                     <constraint firstItem="qmt-4F-VB2" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="17" id="Q7o-9L-22B"/>
                     <constraint firstItem="ZBr-em-muD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="TEI-Jp-WWb"/>
                     <constraint firstItem="gMa-GG-ZWw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-3" id="dAG-Wf-wz5"/>
                     <constraint firstItem="qmt-4F-VB2" firstAttribute="top" secondItem="8l3-dB-x4p" secondAttribute="bottom" constant="8" id="dFK-3o-cKV"/>
                     <constraint firstAttribute="trailing" secondItem="ZBr-em-muD" secondAttribute="trailing" constant="9" id="eB5-Zk-bbx"/>
-                    <constraint firstAttribute="trailing" secondItem="8l3-dB-x4p" secondAttribute="trailing" constant="201" id="fbL-ZE-t0n"/>
                     <constraint firstAttribute="trailing" secondItem="qmt-4F-VB2" secondAttribute="trailing" constant="9" id="kdw-QJ-EBo"/>
                     <constraint firstItem="HL8-PL-UFa" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="8" id="mU8-NI-OPt"/>
                     <constraint firstItem="ZBr-em-muD" firstAttribute="leading" secondItem="gMa-GG-ZWw" secondAttribute="trailing" constant="17" id="oVy-gh-fja"/>
